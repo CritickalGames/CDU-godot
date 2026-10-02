@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bk2cu2ameptuy"]
 
-[ext_resource type="Script" uid="uid://d3q2qcdv7c15m" path="res://src/gameplay/player/player.gd" id="1_k2146"]
+[ext_resource type="Script" uid="uid://d3q2qcdv7c15m" path="res://src/gameplay/prototipo/player/player.gd" id="1_k2146"]
 [ext_resource type="Texture2D" uid="uid://ib10n4tem8sr" path="res://assets/art/characters/player/ghost_player.png" id="2_sjr3t"]
 [ext_resource type="Texture2D" uid="uid://ban4x2lmtdw5q" path="res://assets/art/characters/player/ghost_player_NORMAL.png" id="3_d3trc"]
 

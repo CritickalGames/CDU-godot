@@ -22,7 +22,7 @@ func _ready() -> void:
 ### consigue el "resourse" .char_2d de tipo Def_char_2d
 ### el recurso da una imagen para la previsualización en el editor.
 func _on_refresh_timeout() -> void:
-	var spawner : Spawner = get_parent() as Spawner
+	var spawner : Spawner2D = get_parent() as Spawner2D
 	if spawner == null:
 		return
 

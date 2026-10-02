@@ -1,4 +1,4 @@
-extends Res_generico_2d
+extends Def_char_2d
 class_name Def_char_prototipo
 
 @export var ejemplo : String

@@ -6,7 +6,7 @@ extends BaseLevel
 ## FUTURE (level): Replace with the actual level implementation.
 
 #@onready var player_spawn_marker : Spawner = $Entities/Spawner_generico
-@onready var player_spawn_marker : PlayerSpawn = $Entities/PlayerSpawn
+@onready var player_spawn_marker : Spawner2D = $Entities/PlayerSpawn
 # FUTURE (camera): This will be moved to camera system/manager
 @onready var player_camera : Camera2D = $Entities/PlayerCamera
 

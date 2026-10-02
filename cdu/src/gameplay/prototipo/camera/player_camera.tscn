@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c30h5vs12dmlh"]
 
-[ext_resource type="Script" uid="uid://l1qpd7ltgx0i" path="res://src/gameplay/camera/player_camera.gd" id="1_chufy"]
+[ext_resource type="Script" uid="uid://l1qpd7ltgx0i" path="res://src/gameplay/prototipo/camera/player_camera.gd" id="1_chufy"]
 
 [node name="PlayerCamera" type="Camera2D" unique_id=1250976206]
 zoom = Vector2(2, 2)
