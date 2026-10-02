@@ -1,531 +1,451 @@
-# CDU
-La idea de un CDU es crear una guia de proyectos para ganar experiencia de manera incremental enfrentando temprano los problemas de una arquitectura escalable buscando la forma de unir pequeños proyectos en un gran proyecto interconectado, no como una colección de proyectos (juegos), si no que una colección de "herramietnas" o "caracteristicas" mixtas que deben cohexistir sin código repetido y de manera interconectada
+# 🎮 CDU: Capas de Aprendizaje
 
-## CDU para Godot
-El CDU, Cin Desarrollos en Uno, nació inspirado por los cartuchos que prometían 100 juegos en un sólo cartucho. La diferencia esencial, es que acá cada juego está pensado para tener un progreso incremental, parecido a lo que pasa con "Evoland", que empieza con un juego 2d y termina en un juego 3d. 
+El Cien Desarrollos en Uno(CDU), es una propuesta de ruta de aprendizaje para desarrollo de vídeo juegos inspirado en los cartuchos que prometían mil juegos diferentes en uno.
 
-Éste CDU se puede usar, potencialmente, en cualquier motor, pero en éste repo usaremos Godot por preferencia personal.
+Todo dicen: haz un juego pequeño, pero nunca te dicen cuál o cómo seguir después de hacer un juego pequeño y qué tan pequeño debe ser, lo que termina con el mismo resultado que hacer el juego de tus sueños el primer día; perido, confuso y desmotivado.
+CDU es una guía de principio a final de qué y en qué orden aprender. Potencialmente se puede usar en cualquier motor, pero en éste repo usaremos Godot 4.7.2
 
-## CDU para Juegos
+# Fases del CDU
 
-Tanto la idea como el nombre CDU(Cien desarrollos en Uno) son conceptos que desarrollé por mi cuenta, pero doy libre uso, aunque espero que referencien el repo original "https://github.com/CritickalGames/CDU-godot" o mi página de Itchio "https://critickal-games.itch.io/"
+El CDU tiene 3 fases: 0, 1 y 2. En la primera fase aprendes a usar el motor como si fuera una caja de arrena, pero de forma incremental, en cada paso agregando un tema nuevo que debe convivir con todo lo anterior.
 
-La lista de juegos, las capas y el orden queda a libre albedrío de cada quien, pero éste es que yo terminé formulando
+En la segunda fase aprendes a extraer mecanicas, diseños y a diseñar tus propios MVPs(Mínimo Producto Viable), con una lista de generos organizada de forma seudo cronologíca para conseguir un estudio progresivo en difícultad.
 
-# 🎮 CDU – Capas de Aprendizaje
+En la última, aprendes las minucias del motor; optimización, organización y trucos. Como el objetivo del CDU es ser una ruta de estudio general y ser una ruta para yo aprender a hacer juegos, esos elementos de la FASE 2 no están pensados porque los desconozco.
 
-MPV = Mínimo Producto Viable. No hagas más que eso, no hagas menos que eso.
-
-## 1️⃣ FUNDAMENTOS (2D BÁSICOS)
-
-### 1. Pong
-* **Objetivo técnico:**
-  * Game loop básico
-  * Input inmediato del jugador
-  * Colisiones 2D
-  * Física simple
-  * Gestión de escenas
-* **MPV:** Partida a 5 puntos contra IA simple o segundo jugador local.
-
-### 2. Snake
-* **Objetivo técnico:**
-  * Movimiento en grid
-  * Lista dinámica de segmentos
-  * Tick fijo
-  * Colisión consigo mismo
-* **MPV:** Mapa fijo, comida infinita, game over al chocar.
-
-### 3. Breakout
-* **Objetivo técnico:**
-  * Rebotes usando normales
-  * Destrucción de bloques
-  * Estados de partida
-* **MPV:** 1 nivel con 3 filas de bloques y reinicio automático al ganar o perder.
-
-### 4. Flappy Bird
-* **Objetivo técnico:**
-  * Gravedad + impulso
-  * Spawning temporizado
-  * Score incremental
-* **MPV:** Tuberías infinitas, puntuación y reinicio automático al morir.
-
-### 5. Space Invaders
-* **Objetivo técnico:**
-  * Movimiento grupal
-  * Sistema de proyectiles
-  * Oleadas
-* **MPV:** 1 formación enemiga, disparo del jugador, victoria al limpiar pantalla.
+## 🏗️ **FASE 0: Dominio del Motor**
 
 ---
 
-## 2️⃣ NARRATIVA Y SISTEMAS
+### **Capa 0.1: Menú Simple y Navegación**
 
-### 6. Visual Novel
-* **Objetivo técnico:**
-  * Árbol de diálogos
-  * Persistencia simple
-  * UI desacoplada
-* **MPV:** Historia corta con 3 decisiones y 2 finales.
+#### **Sistemas:**
+- Menú principal con botones (UI Canvas)
+- Cambio de escena (básico y asíncrono)
+- Persistencia de objetos globales (`DontDestroyOnLoad`)
+- Lista de MVPs (ScriptableObject/JSON)
+- Transición fade in/out
 
-### 7. JRPG por turnos
-* **Objetivo técnico:**
-  * Sistema de turnos
-  * Stats básicas
-  * Estados alterados
-* **MPV:** Combate 1v1 jugador vs enemigo hasta que uno muera.
-
-### 8. Tower Defense
-* **Objetivo técnico:**
-  * Pathfinding
-  * Sistema de oleadas
-  * Economía simple
-* **MPV:** 1 mapa, 1 torre, 3 oleadas. Pierdes si 10 enemigos cruzan.
-
-### 9. Match-3
-* **Objetivo técnico:**
-  * Detección de líneas de 3
-  * Cascadas automáticas
-  * Reordenamiento del grid
-* **MPV:** Grid 8x8, combos automáticos, contador de puntos.
-
-### 10. Editor de niveles
-* **Objetivo técnico:**
-  * Colocación de objetos
-  * Guardado en archivo
-  * Carga posterior
-* **MPV:** Crear, guardar y jugar un nivel simple.
+#### **MVP:**
+- 🟦 **2D: Menú Principal Interactivo**  
+  Navegación entre botones, cambio a nivel de prueba, retorno al menú
 
 ---
 
-## 3️⃣ ACCIÓN Y EXPLORACIÓN
+### **Capa 0.2: Hub Espacial**
 
-### 11. Plataformas 2D
-* **Objetivo técnico:**
-  * Física precisa
-  * Estados de animación
-* **MPV:** 1 nivel corto con meta final y 3 enemigos simples.
+#### **Sistemas:**
+- 3 escenas hub (2D, 3D, 2.5D)
+- Navegación entre hubs
+- Selectores de nivel (puertas/portales)
+- Sistema de progresión (desbloqueo)
+- Cambio de dimensión y MVP
 
-### 12. Zelda-like
-* **Objetivo técnico:**
-  * Sistema de inventario
-  * Habilidad desbloqueable
-* **MPV:** Mapa pequeño, 1 ítem clave, 1 puzzle y 1 enemigo.
-
-### 13. Roguelike
-* **Objetivo técnico:**
-  * Generación procedural
-  * Permadeath
-* **MPV:** 3 salas generadas aleatoriamente y jefe final.
-
-### 14. Shooter 2D
-* **Objetivo técnico:**
-  * Input dual
-  * Arma modular
-* **MPV:** Arena pequeña con 5 enemigos y 1 arma.
-
-### 15. Conducción 2D
-* **Objetivo técnico:**
-  * Física con fricción
-  * Checkpoints
-* **MPV:** 1 pista con 1 vuelta cronometrada.
-
-### 16. Bullet Hell
-* **Objetivo técnico:**
-  * Patrones matemáticos
-  * Alta densidad de proyectiles
-* **MPV:** 1 jefe con 3 patrones distintos.
-
-### 17. Run & Gun
-* **Objetivo técnico:**
-  * Armas intercambiables
-  * Enemigos variados
-* **MPV:** Nivel lineal corto con 2 tipos de enemigo y mini-jefe.
-
-### 18. GTA 2D
-* **Objetivo técnico:**
-  * Mapa abierto pequeño
-  * Sistema de misión
-* **MPV:** Ciudad pequeña con 1 misión (ir a punto B y eliminar objetivo).
+#### **MVPs:**
+- 🟦 **2D: Hub 2D** (3 niveles desbloqueables)
+- 🟩 **3D: Hub 3D** (3 niveles desbloqueables)
+- 🟨 **2.5D: Hub 2.5D** (3 niveles desbloqueables)
 
 ---
 
-## 4️⃣ COMPETENCIA Y GESTIÓN
+### **Capa 0.3: Dungeon Crawler**
 
-### 19. Fighting Game
-* **Objetivo técnico:**
-  * Buffer de inputs
-  * Ventanas de cancelación
-* **MPV:** 2 personajes, 4 ataques cada uno, combate al mejor de 3 rounds.
+#### **Sistemas:**
+- Static/Rigid Body
+- Plataformas fijas, sentido único, móviles
+- Raycasting básico
+- Daño, curación, i-frames
+- Atributos del jugador (data class)
 
-### 20. Shoot ’em Up
-* **Objetivo técnico:**
-  * Scroll automático
-  * Power-up simple
-* **MPV:** Nivel de 2 minutos con jefe final.
-
-### 21. Beat ’em Up
-* **Objetivo técnico:**
-  * Hitboxes cuerpo a cuerpo
-  * IA en grupo
-* **MPV:** Escenario único con 6 enemigos totales.
-
-### 22. RTS
-* **Objetivo técnico:**
-  * Selección múltiple
-  * Recursos básicos
-* **MPV:** Mapa pequeño con 3 unidades controlables y 1 base enemiga.
-
-### 23. 4X
-* **Objetivo técnico:**
-  * Turnos globales
-  * Economía simple
-* **MPV:** Mapa pequeño con 3 ciudades y victoria por expansión total.
-
-### 24. IO Game
-* **Objetivo técnico:**
-  * Crecimiento dinámico
-  * Multijugador simple
-* **MPV:** Arena online donde creces al eliminar bots.
-
-### 25. TCG
-* **Objetivo técnico:**
-  * Motor de cartas
-  * Sistema de turnos
-* **MPV:** Mazo de 20 cartas, partida 1v1 hasta que uno llegue a 0 vida.
-
-### 26. Juego Online Base
-* **Objetivo técnico:**
-  * Arquitectura cliente-servidor
-  * Lobby
-* **MPV:** Lobby, inicio automático y partida básica sincronizada.
+#### **MVPs:**
+- 🟦 **2D: Zelda-like 2D** (salas, jarrones, espada, daño)
+- 🟩 **3D: Dungeon Crawler 3D** (primera persona, pasillos, enemigos)
+- 🟨 **2.5D: Rogue-lite 2.5D** (generación procedural, muerte permanente)
 
 ---
 
-## 🧊 CDU – Capas de Aprendizaje (3D)
+### **Capa 0.4: Plataformero**
 
-### 5️ 3D Básico
+#### **Sistemas:**
+- Menú de pausa (`Time.timeScale`)
+- HUD (vidas, monedas, puntuación, tiempo)
+- Sonidos 2D/3D
+- Animaciones (blend trees)
+- Partículas
+- Shaders básicos
+- Configuración persistente
 
-### 27. Plataformas 3D
-* **Aprendes:**
-  * Control de cámara en 3D
-  * Físicas tridimensionales (rigidbody, gravedad)
-  * Detección de colisiones volumétricas
-  * Diseño técnico de niveles 3D
-* **MPV:** Nivel 3D pequeño con cámara libre y meta final.
+#### **MVPs:**
 
-### 28. Conducción (Autos)
-* **Aprendes:**
-  * Física vehicular simplificada
-  * Suspensión y fricción
-  * Control de velocidad y giros
-  * Cámara dinámica en vehículo
-* **MPV:** 1 circuito 3D con 1 vuelta y cronómetro.
+**🟦 2D: Super Mario Bros**
+- Plataformas, enemigos, monedas, power-ups, bandera
+- Audio: volumen maestro/música/efectos persistente
+- Gráfico: resolución, ventana/pantalla completa
+- Controles: mapeo básico de teclas
 
-### 29. Conducción (Motos)
-* **Aprendes:**
-  * Balance dinámico e inclinación
-  * Animación sincronizada con física
-  * Control diferenciado frente a autos
-* **MPV:** Pista corta donde la inclinación afecta el control.
+**🟩 3D: Super Mario 64 Mini**
+- Plataformas 3D, salto triple, cámara orbital, estrellas
+- Audio: dispositivo salida, balance estéreo, mute
+- Gráfico: calidad texturas, sombras, V-Sync
+- Controles: sensibilidad cámara, inversión eje Y, deadzone
 
-### 30. Vuelo Arcade
-* **Aprendes:**
-  * Movimiento libre en 3 ejes
-  * Física simplificada de vuelo
-  * Control de velocidad y orientación
-  * Objetivos dinámicos en espacio abierto
-* **MPV:** Mapa abierto pequeño con 3 objetivos a destruir.
-
-### 31. Supervivencia tipo Minecraft
-* **Aprendes:**
-  * Inventario y crafting
-  * Gestión de mundo dinámico
-  * Interacción con recursos
-  * Guardado persistente básico
-* **MPV:** Recolectar 3 recursos y craftear 1 herramienta.
-
-### 32. Aventura 3D
-* **Aprendes:**
-  * Integración narrativa y exploración
-  * Sistema de misiones básicas
-  * Interacción con NPC y objetos
-* **MPV:** Mapa pequeño con 1 misión y 1 enemigo.
-
-### 33. Minecraft-like
-* **Aprendes:**
-  * Generación procedural de terreno
-  * Modificación dinámica del entorno (bloques)
-  * Optimización de chunks y mundo grande
-* **MPV:** Mundo procedural pequeño editable con bloques.
-
-### 34. Mario Kart-like
-* **Aprendes:**
-  * IA de competidores
-  * Sincronización de ítems y poderes
-  * Físicas arcade multijugador
-* **MPV:** Carrera 3D con 3 karts IA y 1 power-up.
-
-### 6️ 3D Avanzado
-
-### 35. FPS / TPS
-* **Aprendes:**
-  * Control de cámara en primera y tercera persona
-  * Raycasting avanzado para disparos
-  * IA enemiga modular
-  * HUD dinámico
-* **MPV:** Mapa pequeño con 5 enemigos IA y 1 arma.
-
-### 36. Beat ’em up 3D
-* **Aprendes:**
-  * Combos en 3D y sistema lock-on
-  * Animaciones avanzadas
-  * Gestión de múltiples enemigos en espacio tridimensional
-* **MPV:** Arena cerrada con 5 enemigos y combo básico.
-
-### 37. Arena Combat
-* **Aprendes:**
-  * Sincronización de habilidades multijugador
-  * Balance competitivo básico
-  * Control de partidas rápidas
-* **MPV:** Partida 2v2 con habilidades simples.
-
-### 38. Horror
-* **Aprendes:**
-  * IA basada en comportamiento
-  * Control de tensión y pacing
-  * Diseño técnico de iluminación y sonido
-* **MPV:** Casa pequeña con 1 enemigo IA patrullando.
-
-### 39. GTA 3D
-* **Aprendes:**
-  * Mundo abierto con streaming de áreas
-  * Integración de vehículos y combate
-  * Sistema modular de misiones
-  * Gestión de memoria y rendimiento
-* **MPV:** Ciudad pequeña con 1 misión y 1 vehículo funcional.
-
-### 7️⃣ Persistencia y Técnicos
-
-### 40. Mundo Abierto
-* **Aprendes:**
-  * Streaming de mapa en tiempo real
-  * Persistencia básica por zona
-  * Spawns y eventos por proximidad
-* **MPV:** Mapa dividido en 3 zonas con carga dinámica.
-
-### 41. Simulador de Autos
-* **Aprendes:**
-  * Física vehicular realista
-  * Telemetría y debugging
-  * Ajuste de parámetros de manejo
-* **MPV:** Vehículo con física realista y panel básico de velocidad.
-
-### 42. Simulador de Vuelo
-* **Aprendes:**
-  * Física aerodinámica simplificada
-  * Instrumentación simulada
-  * Manejo de múltiples ejes de control
-* **MPV:** Avión controlable con indicador de altitud y velocidad.
-
-### 43. Multiplayer 3D
-* **Aprendes:**
-  * Replicación de transformaciones en red
-  * Predicción cliente-servidor
-  * Reconciliación de estado
-* **MPV:** Escena 3D donde 2 jugadores ven sus movimientos sincronizados.
-
-### 44. ARPG
-* **Aprendes:**
-  * Gestión de habilidades y stats del jugador
-  * Arquitectura basada en componentes
-  * Gestión de enemigos y combate en tiempo real
-* **MPV:** Mapa pequeño con progresión de nivel y 1 habilidad activa.
-
-### 8️⃣ Composición Final
-
-### 45. Editor 3D con Scripting
-* **Aprendes:**
-  * Creación de herramientas internas
-  * Scripting embebido para niveles
-  * Validación de contenido y modularidad
-* **MPV:** Editor que permite crear un nivel simple con scripts básicos y jugarlo.
-
-### 46. Online Persistente (MMO)
-* **Aprendes:**
-  * Arquitectura cliente-servidor autoritativa
-  * Persistencia masiva de datos
-  * Manejo de instancias y respawns
-* **MPV:** Zona pequeña online con guardado de personaje y respawn persistente.
-
-### 47. Procedural Avanzado
-* **Aprendes:**
-  * Generación híbrida (manual + procedural)
-  * Control de reglas y ensamblaje dinámico
-  * Sistemas reutilizables y modulares
-* **MPV:** Mapa generado con reglas mixtas (manual + aleatorio).
-
-### 48. VR / AR
-* **Aprendes:**
-  * Input espacial y tracking
-  * Diseño UX tridimensional
-  * Optimización para alto framerate
-  * Interacción física inmersiva
-* **MPV:** Escena interactiva donde el jugador manipula objetos en espacio 3D.
+**🟨 2.5D: Super Mario 3D World Mini**
+- Plataformas con profundidad, multiplayer local, power-ups
+- Audio: mezcla por categoría, ecualizador
+- Gráfico: límite FPS, anti-aliasing, escala renderizado
+- Controles: remapeo completo, múltiples gamepads
 
 ---
 
-##  Total general
-**48 juegos** → 26 en 2D + 22 en 3D
+### **Capa 0.5: Shooters**
 
+#### **Sistemas:**
+- Instanciación y Spawners
+- Object Pooling
+- Sistema de señales
+- Guardar/cargar partida
+- Wave Manager
 
-# Repo base: Fat Earth Studios - Godot Tutorial Project
+#### **MVPs:**
 
-This repository contains the public companion project for the Godot development tutorials on [**Fat Earth Studios**](https://www.youtube.com/@FatEarthStudios).
+**🟦 2D: Metal Slug**
+- Run & gun, scroll horizontal, plataformas, vehículos, jefes
+- Audio: efectos posicionales, compresión dinámica
+- Gráfico: partículas, screen shake, filtros color
+- Controles: sensibilidad disparo, modo hold/tap, vibración
 
-The project is updated alongside the video series so that you can explore the scripts, project structure, and examples shown in each tutorial.
+**🟩 3D: FPS Arena**
+- Primera persona, raycast, enemigos, munición limitada
+- Audio: 3D espacial con oclusión, HRTF
+- Gráfico: FOV, profundidad campo, motion blur, iluminación
+- Controles: sensibilidad mouse, aceleración, aim assist
 
-The default branch contains the latest public version of the project.
-For the version shown in a specific video, use the corresponding repository tag listed below.
+**🟨 2.5D: Twin-Stick Shooter**
+- WASD + mouse, oleadas infinitas, upgrades
+- Audio: subtítulos, indicadores dirección sonido
+- Gráfico: bloom, viñeta, aberración cromática
+- Controles: apuntado mouse/joystick, auto-aim
 
-## Tutorial Videos and Project Snapshots
+---
 
-| Tutorial                              | Video                                                                         | Project Version                                                      |
-| ------------------------------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| Git and GitHub Workflow for Godot     | [How To Use Git With Godot](https://youtu.be/9yfNX0OdSAw?si=Zy0y8DdWJb68yOdq) | [View the Git tutorial snapshot](https://github.com/fat-earth-studios/tutorial-demo-repo/tree/video-0-git-tutorial) |
-| Setting Up a Godot Project Foundation | [Godot Project Foundation Setup](https://youtu.be/V4SO7foDoW4)                | [View the Project Foundation tutorial snapshot](https://github.com/fat-earth-studios/tutorial-demo-repo/tree/video-1-project-foundation) |
-| Configuring Godot Project Settings and Conventions | [Godot Project Settings and Conventions](https://youtu.be/5-Ev2ZIQgf4) | [View the Project Settings tutorial snapshot](https://github.com/fat-earth-studios/tutorial-demo-repo/tree/video-1b-project-settings) |
-| Abstract `BaseLevel` Design & Load Level Cleanup | [Why My Godot Level Loader Uses an Abstract Class](https://youtu.be/3EYi3Q8Y_dM) | [Updated Load Level and Init Player tutorial snapshot](https://github.com/fat-earth-studios/tutorial-demo-repo/tree/video-2-abstract-base-level)
+### **Capa 0.6: RPGs**
 
-Each tagged snapshot preserves the state of the repository associated with that tutorial, while the default branch continues to receive the additions shown in future videos.
+#### **Sistemas:**
+- NPCs autónomos
+- Diálogo ramificado
+- Inventario (grid/lista)
+- Experiencia y niveles
+- Economía básica
+- Guardado de progresión
 
-## Included Guides
+#### **MVPs:**
 
-### Git Cheat Sheet
+**🟦 2D: Octopath Traveler**
+- HD-2D, turnos con boost, 4 personajes, diálogos ramificados
+- Audio: volumen diálogos, música batalla/exploración
+- Gráfico: escala UI, tamaño fuente, contraste alto
+- Controles: velocidad diálogo, avance automático, confirmación
 
-A practical reference for the Git commands and workflows covered in the Git tutorial:
+**🟩 3D: Final Fantasy VII**
+- ATB, límite tiempo, materias, mundo 3D
+- Audio: estéreo/surround, mezcla voces cinemáticas
+- Gráfico: calidad cinemáticas, videos pre-renderizados
+- Controles: cámara fija/dinámica, velocidad menús, confirmación doble
 
-* [Git Cheat Sheet](./docs/Git_Cheat_Sheet_Godot.md)
+**🟨 2.5D: Final Fantasy II**
+- Falso 3D nave voladora, isométrico, exploración aérea, turnos
+- Audio: loops sin cortes, transiciones suaves
+- Gráfico: filtros CRT/Moderno, paleta colores, aspect ratio
+- Controles: click-to-move/direccional, velocidad combate, atajos
 
-### GDScript Organization Example
+---
 
-A practical reference for organizing GDScript declarations, variables, methods, callbacks, and inner classes, based on Godot’s official GDScript style guide:
-* [GDScript Organization Example](./docs/gdscript_organization_example.gd)
+### **Capa 0.7: Sigilo**
 
-## Project Structure
+#### **Sistemas:**
+- Máquina estados IA (patrulla→sospecha→búsqueda→alerta→combate)
+- Conos visión y detección
+- Sistema de ruido
+- Escondites
+- Cinemáticas avanzadas
+- Sistema de misiones
 
-The Godot project is located in:
+#### **MVPs:**
 
-[`main-game-setup-tutorial/`](./main-game-setup-tutorial/)
+**🟦 2D: Metal Gear Solid 1**
+- Top-down, conos visión, alertas, cinemáticas
+- Audio: volumen pasos, indicadores visuales sonido
+- Gráfico: visibilidad conos, intensidad sombras
+- Controles: sigilo toggle/hold, marcadores rutas, vibración detección
 
+**🟩 3D: Thief**
+- Primera persona, sombras dinámicas, sonido mecánica, sigilo vertical
+- Audio: propagación sonido, eco, atenuación distancia
+- Gráfico: sombras dinámicas, linternas, niebla/humo
+- Controles: sensibilidad agachado, modo lean, indicadores ruido
 
-```text
-main-game-setup-tutorial/
-  addons/             Third-party Godot add-ons
-  assets/             Art, audio, fonts, shaders, and other game assets
-  src/
-    core/             Foundational scenes and scripts
-      autoload/       Globally available systems
-      main_game/      Main entry point for the game
-    debug/            Development and debugging tools
-    gameplay/         Gameplay-specific code
-    levels/           Level scenes and related scripts
-    resources/        Reusable data and resource definitions
-    shaders/          Shaders used for visual effects
-    ui/               User interface scenes and scripts
-  project.godot
-```
+**🟨 2.5D: Mark of the Ninja**
+- Plataformas sigilo, assassinaciones, ruido visual
+- Audio: visualización sonido, subtítulos contextuales
+- Gráfico: contraste zonas oscuras, resaltado escondites
+- Controles: asistencia apuntado, velocidad animaciones, auto-ocultación
 
-The exact contents will expand as new tutorials are released.
+---
 
-## Requirements
+### **Capa 0.8: Arquitectura y Patrones**
 
-This project was created using **Godot 4.7.1**.
+#### **Sistemas:**
+- Singleton (GameManager, AudioManager, SaveManager)
+- Factory (Spawners genéricos)
+- State (máquina estados formal)
+- Observer/Señales avanzado (Event Bus)
+- Command (remapeo, replays)
+- ScriptableObjects
 
-Opening the project with **Godot 4.7.1 or newer** is recommended.
-Older versions of Godot 4.x may not open the project correctly.
+#### **MVPs:**
 
-To clone and open the full project, you will need:
+**🟦 2D: Refactorizar Top-Down Shooter**
+- Aplicar Singleton, Factory, State, Event Bus
+- Audio: perfiles predefinidos, ecualizador 5 bandas
+- Gráfico: presets calidad, configuración avanzada, benchmark
+- Controles: perfiles guardables, import/export, macros
 
-* Godot 4.7.1 or newer
-* Git
-* Git LFS
+**🟩 3D: Refactorizar FPS Arena**
+- Aplicar Command, State, Factory
+- Audio: adaptativo, capas mezclables
+- Gráfico: DLSS/FSR, reflejos, vegetación/partículas
+- Controles: configuración por arma, sensibilidad ADS, toggle/hold
 
-## Downloading the Project
+**🟨 2.5D: Beat 'em Up**
+- Combate cuerpo a cuerpo, combos, múltiples enemigos
+- Audio: volumen golpes por tipo, feedback combos
+- Gráfico: efectos impacto, slow-motion, filtros personaje
+- Controles: buffer inputs, asistencia combos, remapeo combos
 
-You can clone the repository using SSH or HTTPS.
+---
 
-### SSH
+### **Capa 0.9: Audio Avanzado**
 
-```bash
-git clone git@github.com:fat-earth-studios/tutorial-demo-repo.git
-```
+#### **Sistemas:**
+- Audio 2D/3D espacial con oclusión
+- Audio adaptativo/dinámico (capas que se suman según intensidad)
+- Mezclador de audio (mixer) con buses y efectos
+- Efectos de audio (reverb, eco, filtros, delay)
+- Sincronización de audio con eventos del juego
+- Audio por capas (exploración, combate, tensión)
+- Transiciones suaves entre pistas musicales
+- Audio procedural (generación de sonidos en tiempo real)
 
-### HTTPS
+#### **MVPs:**
 
-```bash
-git clone https://github.com/fat-earth-studios/tutorial-demo-repo.git
-```
+**🟦 2D: Juego de Ritmo**
+- Notas que caen en 4 carriles, detección de timing perfecto/bueno/fallo
+- Audio: sincronización frame-perfect con música, efectos de golpeo rítmicos
+- Gráfico: efectos visuales sincronizados con el beat, partículas rítmicas
+- Controles: 4 teclas para cada carril, modo práctica con indicador de timing
 
-After cloning, open the following file in Godot:
+**🟩 3D: Horror con Audio Espacial**
+- Primera persona, pasillos oscuros, enemigos invisibles detectados solo por sonido
+- Audio: 3D espacial completo, reverb por tipo de habitación, pasos que revelan posición
+- Gráfico: iluminación mínima, sombras dinámicas, niebla volumétrica
+- Controles: linterna con batería limitada, agacharse para hacer menos ruido
 
-```text
-main-game-setup-tutorial/project.godot
-```
+**🟨 2.5D: Acción con Audio Adaptativo**
+- Combate con oleadas, música que cambia según intensidad de combate
+- Audio: 3 capas musicales (exploración, combate, jefe) que se mezclan dinámicamente
+- Gráfico: efectos visuales que pulsan con la música, transiciones suaves
+- Controles: combate en tiempo real, esquivar, ataques cargados sincronizados con música
 
-If Git LFS files were not downloaded automatically, run:
+---
 
-```bash
-git lfs pull
-```
+### **Capa 0.10: Shaders y Efectos Visuales**
 
+#### **Sistemas:**
+- Shaders básicos (parpadeo, outline, disolvencia/dissolve)
+- Shaders de post-procesado (bloom, viñeta, aberración cromática, color grading)
+- Shaders de agua (reflejos, refracción, ondas)
+- Shaders de distorsión (calor, impacto, portal)
+- Shaders de holograma/glitch
+- Shaders de disolvencia con patrones (noise, Voronoi)
+- Shaders de outline para selección/interacción
+- Shaders de pantalla completa (CRT, pixelación, scanlines)
 
-## Using an Earlier Tutorial Snapshot
+#### **MVPs:**
 
-The default branch changes as new videos are released. If you want to inspect the project exactly as it appeared during an earlier tutorial, check out the matching tag.
+**🟦 2D: Plataformero con Efectos Visuales**
+- Plataformas con power-ups que activan shaders (invisibilidad, fuego, hielo)
+- Audio: efectos de activación de shaders, música que cambia con power-ups
+- Gráfico: shader de disolvencia al recoger items, outline en enemigos, distorsión al recibir daño
+- Controles: salto, dash con efecto de estela, ataque especial con shader de impacto
 
-For example:
+**🟩 3D: Aventura con Shaders de Ambiente**
+- Exploración de cuevas con agua, lava, cristales mágicos
+- Audio: sonidos ambientales que reaccionan a shaders (agua fluyendo, cristales resonando)
+- Gráfico: shader de agua con reflejos/refracción, lava con distorsión de calor, cristales con holograma
+- Controles: interacción con elementos (tocar agua activa shader, romper cristales con efecto dissolve)
 
-```bash
-git tag
-git checkout video-0-git-tutorial
-```
+**🟨 2.5D: Shooter con Post-Procesado Dinámico**
+- Disparos con efectos de pantalla según arma (glitch, distorsión, bloom)
+- Audio: efectos de arma que sincronizan con shaders de pantalla
+- Gráfico: aberración cromática al recibir daño, bloom en explosiones, CRT filter opcional
+- Controles: disparo con diferentes armas que aplican shaders distintos, esquive con efecto de distorsión
 
-To return to the current version afterward:
+---
 
-```bash
-git checkout master
-```
+### **Capa 0.11: Optimización**
 
+#### **Sistemas:**
+- Frustum/Occlusion Culling
+- LOD
+- Static/Dynamic Batching
+- Texture Atlasing
+- Addressables
+- Profiler
+- Partículas densas (GPU particles)
+- Animaciones fluidas
+- Optimización renderizado
 
-## License
+#### **MVPs:**
 
-### Code
+**🟦 2D: Project Zomboid**
+- Isométrico, mundo abierto, cientos zombies, crafteo, inventario complejo
+- Audio: compresión dinámica, oclusión paredes
+- Gráfico: distancia renderizado, calidad sprites, densidad zombies, modo rendimiento
+- Controles: atajos inventario, rueda objetos, modo construcción
 
-The source code in this repository is licensed under the MIT License.
+**🟩 3D: GTA V Mini**
+- Mundo abierto, streaming chunks, LOD agresivo, occlusion bakeado
+- Audio: ambiental dinámico, radio vehículos
+- Gráfico: distancia dibujado, reflejos tiempo real, sombras, escalado dinámico
+- Controles: asistencia conducción, sensibilidad cámara vehículos, modo foto
 
-See the [LICENSE](./LICENSE) file for details.
+**🟨 2.5D: Vampire Survivors**
+- Cientos enemigos, pooling masivo, atlasing, partículas densas
+- Audio: reducción simultáneos, modo ligero
+- Gráfico: límite partículas, calidad animaciones, modo batería baja
+- Controles: auto-disparo, auto-recolección, atajos upgrades
 
-### Artwork and Assets
+---
 
-Artwork, music, sound, and other non-code assets are not included under the MIT License and remain the property of Daniel B. Russell.
+### **Capa 0.12: Redes**
 
-You are welcome to download the repository and explore the project for personal learning and evaluation purposes. However, those assets may not be copied, redistributed, or reused in other projects without prior written permission.
+#### **Sistemas:**
+- LAN (descubrimiento servidores)
+- P2P (host/cliente)
+- Cliente-Servidor autoritativo
+- Interpolación/extrapolación
+- Sincronización estado/inputs
+- Matchmaking básico
+- Modo local (split-screen/turnos)
 
-If you would like to feature the project, use its assets, or discuss another use case, please contact me.
+#### **MVPs:**
 
-See [ASSETS_LICENSE.md](./ASSETS_LICENSE.md) for details.
+**🟦 2D: Street Fighter**
+- Peleas 2D, sincronización inputs, rollback netcode, 1v1, LAN/P2P/local
+- Audio: chat voz, indicadores lag
+- Gráfico: renderizado netcode, indicadores ping, resolución replays
+- Controles: input delay, buffer inputs, modo práctica frames
 
-## Community and Support
+**🟩 3D: Tactical Shooter**
+- CS:GO/Valorant simplificado, raycast, rondas, compra armas, LAN/servidor/P2P/local
+- Audio: posicionamiento pasos, chat equipo, dirección disparo
+- Gráfico: marcadores daño, indicadores hit, efectos red, modo espectador
+- Controles: predicción cliente, interpolación movimiento, compensación lag
 
-Have a question, want to discuss the tutorials, or want to share what you're building?
+**🟨 2.5D: Mario Kart**
+- Carreras items, rubber-banding, 4 jugadores, P2P/LAN/local
+- Audio: música dinámica, efectos items posicionales
+- Gráfico: efectos red, predicción jugadores, split-screen local
+- Controles: asistencia conducción, sensibilidad acelerador, gamepad por jugador
 
-* Join the [Fat Earth Studios Discord](https://discord.gg/cBxW2j2Gb5)
-* Watch more tutorials on the [Fat Earth Studios YouTube channel](https://www.youtube.com/@FatEarthStudios)
+==============================================================
 
-If the tutorials or public resources have helped you and you would like to support their development, you can also visit the [Fat Earth Studios Ko-fi page](https://ko-fi.com/fatearthstudios).
+## **FASE 1**
 
-## About Fat Earth Studios
+Debes desarrollar tu propio MVP para cada juego.
 
-This repository is part of my game development and tutorial work under **Fat Earth Studios**.
+### **Generación 1 (1971-1977) – Arcade y Consolas Dedicadas**
 
-The channel covers Godot development, game architecture, practical workflows, debugging, performance, and the small decisions that help a prototype grow into a maintainable game project.
+1. **Deportes de paleta (Paddle Sports)**: _Pong_, _Tennis_ (Atari)
+2. **Shoot 'em up espacial temprano**: _Computer Space_, _Space Wars_
+3. **Rompe-ladrillos (Brick-breaker)**: _Breakout_, _Super Breakout_
+4. **Carreras tempranas (Early Racing)**: _Gran Trak 10_, _Night Driver_
+
+### **Generación 2 (1976-1983) – Era Dorada del Arcade / 8-bit**
+
+1. **Shoot 'em up fijo (Fixed Shooter)**: _Space Invaders_, _Galaga_
+2. **Shoot 'em up multidireccional**: _Asteroids_, _Robotron: 2084_
+3. **Shoot 'em up vertical**: _1942_, _Centipede_
+4. **Plataformas de acción (Action-Platformer)**: _Donkey Kong_, _Joust_
+5. **Plataformas de burbujas (Bubble Platformer)**: _Bubble Bobble_, _Snow Bros_
+6. **Laberinto (Maze Chase)**: _Pac-Man_, _Rally-X_
+7. **Cruce de obstáculos (Crossing)**: _Frogger_, _Freeway_
+
+### **Generación 3 (1983-1987) – NES / Master System / Arcade Clásico**
+
+1. **Plataformas 2D de desplazamiento lateral**: _Super Mario Bros._, _Mega Man_
+2. **Run and Gun (Corre y dispara)**: _Contra_, _Gunstar Heroes_
+3. **Light Gun Shooter (Pistola de luz)**: _Duck Hunt_, _Operation Wolf_
+4. **Aventura / Acción top-down**: _The Legend of Zelda_, _Crystalis_
+5. **RPG por turnos (JRPG)**: _Dragon Quest_, _Final Fantasy_
+6. **Metroidvania (Acción-Aventura no lineal)**: _Metroid_, _Castlevania_
+7. **Dungeon Crawler (Mazmorras)**: _Gauntlet_, _Dungeon Explorer_
+8. **Puzzle de bloques que caen (Falling Block Puzzle)**: _Tetris_, _Columns_
+
+### **Generación 4 (1987-1993) – SNES / Sega Genesis / Arcade 16-bit**
+
+1. **Plataformas de velocidad (Speed Platformer)**: _Sonic the Hedgehog_, _Earthworm Jim_
+2. **Beat 'em up (Brawler)**: _Streets of Rage_, _Final Fight_
+3. **Lucha 2D (Fighting Game)**: _Street Fighter II_, _Mortal Kombat_
+4. **Shoot 'em up de desplazamiento (Scrolling Shooter)**: _R-Type_, _Gradius_
+5. **Carreras Arcade de gabinete (Cabinet Racing)**: _Out Run_, _Daytona USA_
+6. **Deportes Arcade exagerados (Arcade Sports)**: _NBA Jam_, _Windjammers_
+7. **Estrategia por turnos táctica (SRPG)**: _Fire Emblem_, _Shining Force_
+
+### **Generación 5 (1993-1998) – PlayStation 1 / Nintendo 64 / Sega Saturn**
+
+1. **Plataformas 3D**: _Super Mario 64_, _Crash Bandicoot_
+2. **Survival Horror**: _Resident Evil_, _Silent Hill_
+3. **RPG de acción isométrico (ARPG)**: _Diablo_, _Secret of Mana_
+4. **Estrategia en tiempo real (RTS)**: _StarCraft_, _Age of Empires_
+5. **Carreras Arcade (Arcade Racing)**: _Mario Kart 64_, _Need for Speed_ (High Stakes)
+6. **Lucha 3D (3D Fighting)**: _Tekken_, _Virtua Fighter_
+7. **Aventura 3D de acción**: _Tomb Raider_, _Spyro the Dragon_
+
+### **Generación 6 (1998-2005) – PlayStation 2 / Xbox / GameCube / Dreamcast**
+
+1. **Mundo abierto / Acción-aventura**: _Grand Theft Auto III_, _Spider-Man 2_
+2. **Sigilo táctico (Tactical Stealth)**: _Metal Gear Solid 2_, _Splinter Cell_
+3. **Character Action / Hack and Slash**: _Devil May Cry_, _God of War_
+4. **Ritmo musical (Rhythm Game)**: _Dance Dance Revolution_, _Guitar Hero_
+5. **RPG Occidental (WRPG)**: _The Elder Scrolls III: Morrowind_, _Star Wars: Knights of the Old Republic_
+6. **MMORPG**: _World of Warcraft_, _RuneScape_
+
+### **Generación 7 (2005-2012) – PlayStation 3 / Xbox 360 / Wii**
+
+1. **TPS con cobertura (Cover Shooter)**: _Gears of War_, _Uncharted_
+2. **Sandbox de supervivencia**: _Minecraft_, _Terraria_
+3. **FPS multijugador competitivo**: _Call of Duty 4: Modern Warfare_, _Halo 3_
+4. **Puzzle de física**: _Portal_, _World of Goo_
+5. **Plataformas de precisión (Precision Platformer)**: _Super Meat Boy_, _Braid_
+
+### **Generación 8 (2012-2020) – PlayStation 4 / Xbox One / Nintendo Switch**
+
+1. **Battle Royale**: _Fortnite_, _PUBG: Battlegrounds_
+2. **Action Roguelike (Roguelite de acción)**: _Hades_, _The Binding of Isaac_
+3. **Deckbuilder Roguelike**: _Slay the Spire_, _Monster Train_
+4. **Deportes de simulación**: _FIFA_ (EA Sports FC), _NBA 2K_
+5. **Deportes de vehículos / Arcade**: _Rocket League_, _Forza Horizon_
+6. **Souls-like (Action RPG de alta dificultad)**: _Dark Souls_, _Bloodborne_
+7. **Cooperativo caótico / Gestión**: _It Takes Two_, _Overcooked!_
+
+### **Generación 9 (2020-Presente) – PlayStation 5 / Xbox Series X/S**
+
+1. **Bullet Hell / Danmaku**: _Touhou Project_, _Crimsonland_
+2. **Bullet Heaven / Survivor-like**: _Vampire Survivors_, _Brotato_
+3. **Shooter de extracción (Extraction Shooter)**: _Escape from Tarkov_, _Hunt: Showdown_
+4. **Auto-battler**: _Teamfight Tactics_, _Dota Underlords_
+5. **CRPG (Computer Role-Playing Game)**: _Baldur's Gate 3_, _Divinity: Original Sin 2_
+6. **.IO / Multijugador casual**: [_Agar.io_](http://Agar.io "‌"), [http://Slither.io](http://Slither.io "smartCard-inline")
+7. **Endless Runner**: _Subway Surfers_, _Temple Run_
+8. **Moba:** LOL, Dota, Smite, dead lock
