@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Def_char_prototipo" format=3 uid="uid://cudv553sxpyep"]
+
+[ext_resource type="PackedScene" uid="uid://bk2cu2ameptuy" path="res://src/gameplay/player/player.tscn" id="1_bxs36"]
+[ext_resource type="Script" uid="uid://ox1wc4k6ystr" path="res://recursos/2d/prototipo/_def_prototipo.gd" id="1_g4jnk"]
+[ext_resource type="Texture2D" uid="uid://ib10n4tem8sr" path="res://assets/art/characters/player/ghost_player.png" id="2_tffsa"]
+
+[resource]
+script = ExtResource("1_g4jnk")
+escena = ExtResource("1_bxs36")
+preview_texture = ExtResource("2_tffsa")
+metadata/_custom_type_script = "uid://crfkhcv58fxxr"

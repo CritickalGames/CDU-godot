@@ -1,5 +1,5 @@
 class_name Player
-extends CharacterBody2D
+extends BaseChar2D
 ## PLACEHOLDER: This script exists only to provide a movable player for demonstrating the project foundation.
 ## It is adapted from Godot's default CharacterBody2D template and is not intedned as an example of a
 ## complete player controller or gameplay architecture
@@ -11,6 +11,12 @@ const SPRINT_MULTIPLIER_VALUE : float = 2.0 ## Increase speed by a multiple of t
 var camera_look_direction : Vector2 = Vector2.ZERO
 
 @onready var player_sprite_2d : Sprite2D = $PlayerSprite2D
+
+func get_char_sprite2d() -> Sprite2D:
+	return player_sprite_2d
+
+func get_shadow_sprite2d() -> Sprite2D:
+	return $ShadowSprite2D
 
 func _physics_process(_delta: float) -> void:
 	var input_direction : Vector2 = Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")

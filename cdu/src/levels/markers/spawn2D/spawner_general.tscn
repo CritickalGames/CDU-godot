@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://d4eus8ydjfa0m"]
+
+[ext_resource type="Script" uid="uid://ckho6gvlp3tfo" path="res://src/levels/markers/spawn2D/spawner.gd" id="1_iajq7"]
+[ext_resource type="Texture2D" uid="uid://ban4x2lmtdw5q" path="res://assets/art/characters/player/ghost_player_NORMAL.png" id="2_lj46d"]
+[ext_resource type="Script" uid="uid://dv36xn8srlgn4" path="res://src/levels/markers/spawn2D/tool_preview.gd" id="2_pqv3e"]
+
+[sub_resource type="Gradient" id="Gradient_mt3ql"]
+offsets = PackedFloat32Array(0.15053764, 0.3297491, 0.37275985)
+colors = PackedColorArray(0, 0, 0, 0.90000004, 0, 0, 0, 0.90400004, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v1pvl"]
+gradient = SubResource("Gradient_mt3ql")
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Spawner" type="Marker2D" unique_id=1487922808]
+gizmo_extents = 16.0
+script = ExtResource("1_iajq7")
+char_prototipo = null
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2062088691]
+position = Vector2(-1, 0)
+rect = Rect2(-9, -32, 20, 39)
+
+[node name="RespawnTimer" type="Timer" parent="." unique_id=270925613]
+
+[node name="PreviewSprite" type="Sprite2D" parent="." unique_id=295500425]
+position = Vector2(0, -15)
+texture = ExtResource("2_lj46d")
+script = ExtResource("2_pqv3e")
+
+[node name="PreviewRefreshTimer" type="Timer" parent="PreviewSprite" unique_id=81524471]
+wait_time = 0.25
+
+[node name="ReferenceShadowSprite" type="Sprite2D" parent="PreviewSprite" unique_id=1291561921]
+texture_filter = 2
+position = Vector2(0, 15)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("GradientTexture2D_v1pvl")
+centered = false
+offset = Vector2(-32, -16)

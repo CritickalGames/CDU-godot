@@ -1,19 +1,19 @@
 [gd_scene format=4 uid="uid://kikf44gko1yv"]
 
-[ext_resource type="Texture2D" uid="uid://b2f2gf5nr6cpb" path="res://assets/art/world/backgrounds/water_background.png" id="1_5sg3a"]
-[ext_resource type="Texture2D" uid="uid://bg6ovpb27jlpy" path="res://assets/art/world/backgrounds/Skybox_Dusk.png" id="1_8abq8"]
-[ext_resource type="Script" uid="uid://dd67bmoag4gsi" path="res://src/levels/prototypes/test_level_02/test_level_02.gd" id="1_80iu8"]
-[ext_resource type="Shader" uid="uid://ql4dtrquj46y" path="res://src/shaders/skybox/slight_breeze.gdshader" id="1_ephit"]
-[ext_resource type="Texture2D" uid="uid://dog1ytfg1b3gg" path="res://assets/art/world/tilesets/Mountains_Sheet_v2.png" id="2_1mylo"]
-[ext_resource type="Shader" uid="uid://bhq0cor1xktqi" path="res://src/shaders/water/water_wavy.gdshader" id="2_xg6m2"]
-[ext_resource type="Texture2D" uid="uid://cnsekqs8nco8e" path="res://assets/art/world/backgrounds/Clouds_Only_Dusk.png" id="3_80iu8"]
-[ext_resource type="Texture2D" uid="uid://dh7bg2marrmwj" path="res://assets/art/world/tilesets/grass_deep_grass_sand.png" id="3_dc1ga"]
-[ext_resource type="Texture2D" uid="uid://dblrh4gk44531" path="res://assets/art/world/backgrounds/Clouds_Only_Night.png" id="5_4sype"]
-[ext_resource type="Texture2D" uid="uid://d3l78v2260dnm" path="res://assets/art/world/backgrounds/NORMAL_water_backgroundv2.png" id="6_4sype"]
-[ext_resource type="Texture2D" uid="uid://bwehac8qlixsd" path="res://assets/art/world/tilesets/Decoration_Layer_Tiles.png" id="7_507rp"]
-[ext_resource type="PackedScene" uid="uid://bmmdnypq2jn02" path="res://src/levels/level_objects/bonfire/bonfire.tscn" id="10_80iu8"]
-[ext_resource type="PackedScene" uid="uid://c30h5vs12dmlh" path="res://src/gameplay/camera/player_camera.tscn" id="11_vax7a"]
-[ext_resource type="PackedScene" uid="uid://pjrcbht7pr5a" path="res://src/levels/level_objects/markers/player_spawn/player_spawn.tscn" id="13_80iu8"]
+[ext_resource type="Script" uid="uid://dd67bmoag4gsi" path="res://src/levels/niveles/prototypes/test_level_02/test_level_02.gd" id="1_tvun3"]
+[ext_resource type="Texture2D" uid="uid://bg6ovpb27jlpy" path="res://assets/art/world/backgrounds/Skybox_Dusk.png" id="2_or4i1"]
+[ext_resource type="Shader" uid="uid://ql4dtrquj46y" path="res://src/shaders/skybox/slight_breeze.gdshader" id="3_x3y8p"]
+[ext_resource type="Texture2D" uid="uid://cnsekqs8nco8e" path="res://assets/art/world/backgrounds/Clouds_Only_Dusk.png" id="4_lsxlg"]
+[ext_resource type="Texture2D" uid="uid://dblrh4gk44531" path="res://assets/art/world/backgrounds/Clouds_Only_Night.png" id="5_262mj"]
+[ext_resource type="Shader" uid="uid://bhq0cor1xktqi" path="res://src/shaders/water/water_wavy.gdshader" id="6_5xxug"]
+[ext_resource type="Texture2D" uid="uid://b2f2gf5nr6cpb" path="res://assets/art/world/backgrounds/water_background.png" id="7_38t4c"]
+[ext_resource type="Texture2D" uid="uid://d3l78v2260dnm" path="res://assets/art/world/backgrounds/NORMAL_water_backgroundv2.png" id="8_ck4wk"]
+[ext_resource type="Texture2D" uid="uid://dh7bg2marrmwj" path="res://assets/art/world/tilesets/grass_deep_grass_sand.png" id="9_jrve4"]
+[ext_resource type="Texture2D" uid="uid://bwehac8qlixsd" path="res://assets/art/world/tilesets/Decoration_Layer_Tiles.png" id="10_qylhc"]
+[ext_resource type="Texture2D" uid="uid://dog1ytfg1b3gg" path="res://assets/art/world/tilesets/Mountains_Sheet_v2.png" id="11_f8n8s"]
+[ext_resource type="PackedScene" uid="uid://bmmdnypq2jn02" path="res://src/levels/level_objects/bonfire/bonfire.tscn" id="12_r5ofg"]
+[ext_resource type="PackedScene" uid="uid://c30h5vs12dmlh" path="res://src/gameplay/camera/player_camera.tscn" id="13_jfbr4"]
+[ext_resource type="PackedScene" uid="uid://d4eus8ydjfa0m" path="res://src/levels/markers/spawn2D/spawner_general.tscn" id="15_t7rm6"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ephit"]
 noise_type = 3
@@ -28,7 +28,7 @@ normalize = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_507rp"]
 resource_local_to_scene = true
-shader = ExtResource("1_ephit")
+shader = ExtResource("3_x3y8p")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_507rp")
 shader_parameter/distortion_amount = 0.010000000475
 shader_parameter/distortion_speed = 0.002000000095
@@ -76,7 +76,7 @@ seamless = true
 normalize = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ephit"]
-shader = ExtResource("2_xg6m2")
+shader = ExtResource("6_5xxug")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_ephit")
 shader_parameter/distortion_strength = 0.0030000001425
 shader_parameter/distortion_speed = 0.02000000095
@@ -87,11 +87,11 @@ shader_parameter/ripple_scale = 24.0
 shader_parameter/softness = 1.0
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_vax7a"]
-diffuse_texture = ExtResource("1_5sg3a")
-normal_texture = ExtResource("6_4sype")
+diffuse_texture = ExtResource("7_38t4c")
+normal_texture = ExtResource("8_ck4wk")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5sg3a"]
-texture = ExtResource("3_dc1ga")
+texture = ExtResource("9_jrve4")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -136,7 +136,7 @@ texture = ExtResource("3_dc1ga")
 6:5/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vax7a"]
-texture = ExtResource("7_507rp")
+texture = ExtResource("10_qylhc")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -150,7 +150,7 @@ sources/0 = SubResource("TileSetAtlasSource_5sg3a")
 sources/1 = SubResource("TileSetAtlasSource_vax7a")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dc1ga"]
-texture = ExtResource("2_1mylo")
+texture = ExtResource("11_f8n8s")
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
@@ -219,7 +219,7 @@ adjustment_enabled = true
 adjustment_contrast = 1.1
 
 [node name="TestLevel_02" type="Node2D" unique_id=1412663455]
-script = ExtResource("1_80iu8")
+script = ExtResource("1_tvun3")
 
 [node name="BackBackground" type="CanvasLayer" parent="." unique_id=1053035492]
 layer = -100
@@ -239,7 +239,7 @@ color = Color(0, 0, 0, 1)
 [node name="Sky" type="Sprite2D" parent="Background/Dusk" unique_id=770370131]
 light_mask = 4
 texture_filter = 2
-texture = ExtResource("1_8abq8")
+texture = ExtResource("2_or4i1")
 centered = false
 
 [node name="SkyboxClouds" type="Sprite2D" parent="Background/Dusk" unique_id=1533736214]
@@ -249,7 +249,7 @@ texture_repeat = 2
 material = SubResource("ShaderMaterial_507rp")
 position = Vector2(-8, -28)
 scale = Vector2(1.0234376, 1.2708334)
-texture = ExtResource("3_80iu8")
+texture = ExtResource("4_lsxlg")
 centered = false
 
 [node name="Sun" type="Polygon2D" parent="Background/Dusk" unique_id=526935566]
@@ -284,7 +284,7 @@ visible = false
 light_mask = 4
 texture_filter = 2
 scale = Vector2(1, 1.3333334)
-texture = ExtResource("1_8abq8")
+texture = ExtResource("2_or4i1")
 centered = false
 
 [node name="Moon" type="Polygon2D" parent="Background/Night" unique_id=797977011]
@@ -318,7 +318,7 @@ texture_repeat = 2
 material = SubResource("ShaderMaterial_507rp")
 position = Vector2(-8, -28)
 scale = Vector2(1.0234376, 1.2708334)
-texture = ExtResource("5_4sype")
+texture = ExtResource("5_262mj")
 centered = false
 
 [node name="BackgroundWater" type="Sprite2D" parent="Background" unique_id=791984425]
@@ -348,18 +348,18 @@ tile_set = SubResource("TileSet_5sg3a")
 
 [node name="Entities" type="Node2D" parent="." unique_id=132771634]
 
-[node name="Bonfire" parent="Entities" unique_id=1121218955 instance=ExtResource("10_80iu8")]
+[node name="Bonfire" parent="Entities" unique_id=1121218955 instance=ExtResource("12_r5ofg")]
 position = Vector2(320, 192)
 
-[node name="PlayerCamera" parent="Entities" unique_id=1250976206 instance=ExtResource("11_vax7a")]
+[node name="PlayerCamera" parent="Entities" unique_id=1250976206 instance=ExtResource("13_jfbr4")]
 position = Vector2(623.362, 206.43457)
 limit_left = 0
 limit_top = 0
 limit_right = 640
 limit_bottom = 360
 
-[node name="PlayerSpawn" parent="Entities" unique_id=1487922808 instance=ExtResource("13_80iu8")]
-position = Vector2(623.362, 206.43457)
+[node name="Spawner_generico" parent="Entities" unique_id=1371477265 instance=ExtResource("15_t7rm6")]
+position = Vector2(623.362, 206.435)
 
 [node name="Environment" type="Node2D" parent="." unique_id=1922590553]
 
