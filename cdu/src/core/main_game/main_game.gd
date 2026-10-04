@@ -12,9 +12,9 @@ var player : Player = null
 var _current_level : BaseLevel = null
 
 # Game World root nodes
-@onready var level_root  : Node2D = %LevelRoot
-@onready var entity_root : Node2D = %EntityRoot
-@onready var effect_root : Node2D = %EffectRoot
+@onready var level_root  : Node = %LevelRoot
+@onready var entity_root : Node = %EntityRoot
+@onready var effect_root : Node = %EffectRoot
 
 # UI Root Nodes (FUTURE)
 @onready var hud_root        : Control = %HudRoot
