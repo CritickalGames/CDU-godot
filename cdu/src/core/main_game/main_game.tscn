@@ -10,16 +10,16 @@ script = ExtResource("1_6yl8a")
 [node name="Systems" type="Node" parent="." unique_id=1276464674]
 process_mode = 3
 
-[node name="World" type="Node2D" parent="." unique_id=137485709]
+[node name="World" type="Node" parent="." unique_id=1145520608]
 process_mode = 1
 
-[node name="LevelRoot" type="Node2D" parent="World" unique_id=196322165]
+[node name="LevelRoot" type="Node" parent="World" unique_id=1933266051]
 unique_name_in_owner = true
 
-[node name="EntityRoot" type="Node2D" parent="World" unique_id=965216185]
+[node name="EntityRoot" type="Node" parent="World" unique_id=667914223]
 unique_name_in_owner = true
 
-[node name="EffectRoot" type="Node2D" parent="World" unique_id=1018165254]
+[node name="EffectRoot" type="Node" parent="World" unique_id=789908404]
 unique_name_in_owner = true
 
 [node name="HudLayer" type="CanvasLayer" parent="." unique_id=560793207]
