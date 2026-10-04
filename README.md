@@ -16,6 +16,20 @@ En la última, aprendes las minucias del motor; optimización, organización y t
 ## 🏗️ **FASE 0: Dominio del Motor**
 
 ---
+## 🔑 **Índice CPU Fase 0**
+- **0.1:** Menú simple (1 MVP)
+- **0.2:** Hub espacial (3 hubs por dimensión)
+- **0.3:** Dungeon Crawler (daño, físicas)
+- **0.4:** Plataformero Mario (feedback, game feel)
+- **0.5:** Shooters (Metal Slug 2D, FPS 3D, Twin-Stick 2.5D)
+- **0.6:** RPGs (Octopath 2D, FF7 3D, FF2 2.5D)
+- **0.7:** Sigilo (IA, cinemáticas: Metal Gear/Thief/MotN)
+- **0.8:** Refactorización (patrones, beat 'em up 2.5D)
+- **0.9:** Audio Avanzado (ritmo 2D, horror 3D, acción adaptativa 2.5D)
+- **0.10:** Shaders (plataformero efectos 2D, aventura ambiente 3D, shooter post-procesado 2.5D)
+- **0.11:** Optimización (Project Zomboid 2D, GTA 3D, Vampire Survivors 2.5D)
+- **0.12:** Multijugador (Street Fighter 2D, Tactical Shooter 3D, Mario Kart 2.5D)
+---
 
 ### **Capa 0.1: Menú Simple y Navegación**
 
