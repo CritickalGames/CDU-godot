@@ -20,6 +20,7 @@ config/icon="uid://4g8iyeg82o76"
 [autoload]
 
 Global="*uid://deqdpk17hcujn"
+GEnum="*uid://c7fwa7ve5o0p7"
 
 [debug]
 

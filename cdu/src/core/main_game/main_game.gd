@@ -4,8 +4,8 @@ extends Node
 ## Responsible for setting up the World layers and coordinating high-level systems.
 
 # FUTURE (main menu): Load test level for prototype
-const TEST_LEVEL_02    : String =  "uid://kikf44gko1yv"
-const PLAYER_SCENE_UID : String =  "uid://bk2cu2ameptuy"
+const ESCENA_INICIAL   : String =  GEnum.ESCENAS.TEST_LEVEL_02
+const PLAYER_SCENE_UID : String =  GEnum.ESCENAS.TEST_PLAYER2D
 
 var player : Player = null
 
@@ -24,7 +24,7 @@ var _current_level : BaseLevel = null
 func _ready() -> void:
 	_init_player()
 
-	load_level(TEST_LEVEL_02)
+	load_level(ESCENA_INICIAL)
 
 
 func _input(event: InputEvent) -> void:
