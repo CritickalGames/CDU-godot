@@ -1,6 +1,9 @@
+# Etiquetas
 @tool # or @abstract (if either is needed)
 @icon("res://path/to/icon.svg")
+# Tipo de script
 class_name PascalCase
+
 extends Node
 ## Brief description of class
 ##
@@ -16,7 +19,7 @@ enum EnumName
   ITEM_2
 }
 
-#constants (CONSTANT_CASE)
+# constants (CONSTANT_CASE)
 const CONSTANT_VARIABLE : float = 9.42
 
 # export variables (snake_case)
@@ -32,9 +35,10 @@ var _this_is_private : int = 42
 @onready var on_ready_var : Sprite2D = $Sprite2D
 
 # Optional built-in virtual methods:
-# _init()
-# _enter_tree()
-# _ready()
+## _init()
+## _enter_tree()
+## _ready()
+
 # Remaining built-in virtual methods
 
 func _ready() -> void:
