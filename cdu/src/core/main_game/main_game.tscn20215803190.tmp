@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://cap1562eb08js"]
+
+[ext_resource type="Script" uid="uid://dw0qjpkf84asx" path="res://src/core/main_game/main_game.gd" id="1_6yl8a"]
+[ext_resource type="Script" uid="uid://r3ma3cmfccp5" path="res://src/core/main_game/world_capa/level_root.gd" id="2_6n4xl"]
+[ext_resource type="PackedScene" uid="uid://bwmhixliuiiqq" path="res://src/debug/debug_text_overlay.tscn" id="2_6yl8a"]
+[ext_resource type="Script" uid="uid://bvkon6yy038kv" path="res://src/core/main_game/world_capa/world.gd" id="2_n4iq1"]
+[ext_resource type="Script" uid="uid://dpjswsalko4pm" path="res://src/core/main_game/world_capa/entity_root.gd" id="3_ibp4d"]
+[ext_resource type="Script" uid="uid://qemag8twsb0" path="res://src/core/main_game/world_capa/effect_root.gd" id="4_tk58t"]
+[ext_resource type="Script" uid="uid://me3drwy0cnhc" path="res://src/core/main_game/hud_capa/hud_layer.gd" id="6_0kore"]
+[ext_resource type="Script" uid="uid://bbccdltaheva1" path="res://src/core/main_game/hud_capa/menu_root.gd" id="7_0kore"]
+
+[sub_resource type="GDScript" id="GDScript_l0hoa"]
+script/source = "extends CanvasLayer
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"interact\"):
+		get_tree().paused = !get_tree().paused
+		$PauseRoot/Label.visible = !$PauseRoot/Label.visible
+"
+
+[node name="MainGame" type="Node" unique_id=160159159]
+process_mode = 3
+script = ExtResource("1_6yl8a")
+
+[node name="Systems" type="Node" parent="." unique_id=1276464674]
+process_mode = 3
+
+[node name="World" type="Node" parent="." unique_id=1145520608]
+process_mode = 1
+script = ExtResource("2_n4iq1")
+
+[node name="LevelRoot" type="Node" parent="World" unique_id=1933266051]
+script = ExtResource("2_6n4xl")
+
+[node name="EntityRoot" type="Node" parent="World" unique_id=667914223]
+script = ExtResource("3_ibp4d")
+
+[node name="EffectRoot" type="Node" parent="World" unique_id=789908404]
+script = ExtResource("4_tk58t")
+
+[node name="HudLayer" type="CanvasLayer" parent="." unique_id=560793207]
+process_mode = 1
+layer = 10
+script = ExtResource("6_0kore")
+
+[node name="HudRoot" type="Control" parent="HudLayer" unique_id=819024193]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuRoot" type="Control" parent="HudLayer" unique_id=275881607]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("7_0kore")
+
+[node name="PauseLayer" type="CanvasLayer" parent="." unique_id=767098184]
+process_mode = 3
+layer = 20
+script = SubResource("GDScript_l0hoa")
+
+[node name="PauseRoot" type="Control" parent="PauseLayer" unique_id=775353493]
+unique_name_in_owner = true
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="PauseLayer/PauseRoot" unique_id=698090028]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -11.5
+offset_right = 26.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PAUSA"
+
+[node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1477290089]
+process_mode = 3
+layer = 100
+
+[node name="TransitionRoot" type="Control" parent="TransitionLayer" unique_id=1292442513]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="DebugLayer" type="CanvasLayer" parent="." unique_id=1082170147]
+process_mode = 3
+layer = 128
+
+[node name="DebugRoot" type="Control" parent="DebugLayer" unique_id=67028178]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="DebugTextOverlay" parent="DebugLayer/DebugRoot" unique_id=1298185809 instance=ExtResource("2_6yl8a")]
+layout_mode = 1
+mouse_behavior_recursive = 1

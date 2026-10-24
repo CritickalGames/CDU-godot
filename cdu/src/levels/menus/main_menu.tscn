@@ -1,0 +1,276 @@
+[gd_scene format=3 uid="uid://6gt31cj52gpk"]
+
+[ext_resource type="Script" uid="uid://cn04v725g1xs2" path="res://src/levels/menus/main_menu.gd" id="1_4kvli"]
+[ext_resource type="Texture2D" uid="uid://b2f2gf5nr6cpb" path="res://assets/art/world/backgrounds/water_background.png" id="1_6orjo"]
+[ext_resource type="Shader" uid="uid://bhq0cor1xktqi" path="res://src/shaders/water/water_wavy.gdshader" id="1_vjfca"]
+[ext_resource type="Texture2D" uid="uid://d2iwe0vdb60aa" path="res://assets/HUD/Buttons/Blue_Buttons_Pixel.png" id="2_wnyyj"]
+[ext_resource type="Texture2D" uid="uid://c73fijfg8bt1s" path="res://assets/HUD/Buttons/Red_Buttons_Pixel.png" id="3_stki2"]
+[ext_resource type="Texture2D" uid="uid://b1rjlgp76vwd0" path="res://assets/HUD/Buttons/Gray_Buttons_Pixel.png" id="4_stki2"]
+[ext_resource type="Script" uid="uid://dr0bh5olry04x" path="res://src/levels/menus/main_menu/VFlex.gd" id="7_4kvli"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4kvli"]
+shader = ExtResource("1_vjfca")
+shader_parameter/distortion_strength = 0.006
+shader_parameter/distortion_speed = 0.08
+shader_parameter/noise_scale = 4.0
+shader_parameter/ripple_strength = 0.003
+shader_parameter/ripple_speed = 0.5
+shader_parameter/ripple_scale = 24.0
+shader_parameter/softness = 0.25
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdpht"]
+atlas = ExtResource("2_wnyyj")
+region = Rect2(192, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wuv5"]
+atlas = ExtResource("2_wnyyj")
+region = Rect2(0, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc5oo"]
+atlas = ExtResource("3_stki2")
+region = Rect2(160, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbhhy"]
+atlas = ExtResource("2_wnyyj")
+region = Rect2(160, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clsjf"]
+atlas = ExtResource("4_stki2")
+region = Rect2(240, 32, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjfca"]
+atlas = ExtResource("2_wnyyj")
+region = Rect2(80, 32, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kvli"]
+atlas = ExtResource("3_stki2")
+region = Rect2(240, 32, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n00gq"]
+atlas = ExtResource("2_wnyyj")
+region = Rect2(240, 32, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orh7b"]
+atlas = ExtResource("2_wnyyj")
+region = Rect2(32, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcqqr"]
+atlas = ExtResource("3_stki2")
+region = Rect2(192, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtf81"]
+atlas = ExtResource("2_wnyyj")
+region = Rect2(192, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4q011"]
+atlas = ExtResource("4_stki2")
+region = Rect2(192, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apcht"]
+atlas = ExtResource("2_wnyyj")
+region = Rect2(64, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0g1gk"]
+atlas = ExtResource("3_stki2")
+region = Rect2(64, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtm8t"]
+atlas = ExtResource("2_wnyyj")
+region = Rect2(64, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0xn0"]
+atlas = ExtResource("4_stki2")
+region = Rect2(64, 48, 32, 16)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vjfca"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4kvli"]
+transitions = ["Start", "End", SubResource("AnimationNodeStateMachineTransition_vjfca")]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n00gq"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_orh7b"]
+transitions = ["Start", "End", SubResource("AnimationNodeStateMachineTransition_n00gq")]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_clsjf"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fdpht"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8wuv5"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_guahi"]
+states/EstadoVBox/node = SubResource("AnimationNodeStateMachine_4kvli")
+states/EstadoVBox/position = Vector2(617, 100)
+states/MainVBox/node = SubResource("AnimationNodeStateMachine_orh7b")
+states/MainVBox/position = Vector2(361, 100)
+transitions = ["Start", "MainVBox", SubResource("AnimationNodeStateMachineTransition_clsjf"), "MainVBox", "EstadoVBox", SubResource("AnimationNodeStateMachineTransition_fdpht"), "EstadoVBox", "MainVBox", SubResource("AnimationNodeStateMachineTransition_8wuv5")]
+graph_offset = Vector2(125, 11)
+
+[node name="MainMenu" type="Control" unique_id=131343629]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4kvli")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=766182734]
+material = SubResource("ShaderMaterial_4kvli")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_6orjo")
+metadata/_edit_lock_ = true
+
+[node name="VBoxTitulo" type="VBoxContainer" parent="." unique_id=1924384721]
+propagate_maximum_size = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -103.215
+offset_bottom = 142.7851
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+theme_override_constants/separation = 80
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="VBoxTitulo" unique_id=412516045]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0, 0.69)
+offset_transform_scale = Vector2(5.265, 5.265)
+texture = SubResource("AtlasTexture_fdpht")
+metadata/_edit_lock_ = true
+
+[node name="Control" type="Control" parent="VBoxTitulo" unique_id=1644885770]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+
+[node name="VFlex" type="VFlowContainer" parent="VBoxTitulo/Control" unique_id=1279826906]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+offset_left = -60.0
+offset_right = 940.0
+offset_bottom = 107.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+theme_override_constants/h_separation = 745
+script = ExtResource("7_4kvli")
+metadata/_edit_lock_ = true
+
+[node name="VBoxMain" type="VBoxContainer" parent="VBoxTitulo/Control/VFlex" unique_id=946400557]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+theme_override_constants/separation = 14
+
+[node name="BtnStart" type="TextureButton" parent="VBoxTitulo/Control/VFlex/VBoxMain" unique_id=145608360]
+custom_minimum_size = Vector2(126.925, 65)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(1.48, 1.505)
+offset_transform_scale = Vector2(3.985, 3.985)
+texture_normal = SubResource("AtlasTexture_8wuv5")
+texture_pressed = SubResource("AtlasTexture_uc5oo")
+texture_hover = SubResource("AtlasTexture_xbhhy")
+texture_disabled = SubResource("AtlasTexture_clsjf")
+
+[node name="BtnQuit" type="TextureButton" parent="VBoxTitulo/Control/VFlex/VBoxMain" unique_id=798523581]
+custom_minimum_size = Vector2(56.38, 27.045)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+texture_normal = SubResource("AtlasTexture_vjfca")
+texture_pressed = SubResource("AtlasTexture_4kvli")
+texture_hover = SubResource("AtlasTexture_n00gq")
+texture_disabled = SubResource("AtlasTexture_clsjf")
+stretch_mode = 0
+
+[node name="VBoxSelector" type="VBoxContainer" parent="VBoxTitulo/Control/VFlex" unique_id=940912455]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+theme_override_constants/separation = 14
+
+[node name="OptionButton" type="OptionButton" parent="VBoxTitulo/Control/VFlex/VBoxSelector" unique_id=1213497132]
+custom_maximum_size = Vector2(144, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+selected = 0
+item_count = 3
+popup/item_0/text = "NIVEL 2D"
+popup/item_0/id = 0
+popup/item_1/text = "NIVEL 3D"
+popup/item_1/id = 1
+popup/item_2/text = "NIVEL 2.5D"
+popup/item_2/id = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxTitulo/Control/VFlex/VBoxSelector" unique_id=1838532157]
+layout_mode = 2
+
+[node name="BtnVolver" type="TextureButton" parent="VBoxTitulo/Control/VFlex/VBoxSelector/HBoxContainer" unique_id=74349787]
+custom_minimum_size = Vector2(56.38, 27.045)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+texture_normal = SubResource("AtlasTexture_orh7b")
+texture_pressed = SubResource("AtlasTexture_dcqqr")
+texture_hover = SubResource("AtlasTexture_jtf81")
+texture_disabled = SubResource("AtlasTexture_4q011")
+stretch_mode = 0
+
+[node name="BtnJugar" type="TextureButton" parent="VBoxTitulo/Control/VFlex/VBoxSelector/HBoxContainer" unique_id=1499444563]
+custom_minimum_size = Vector2(56.38, 27.045)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+disabled = true
+texture_normal = SubResource("AtlasTexture_apcht")
+texture_pressed = SubResource("AtlasTexture_0g1gk")
+texture_hover = SubResource("AtlasTexture_wtm8t")
+texture_disabled = SubResource("AtlasTexture_o0xn0")
+stretch_mode = 0
+
+[node name="VScrollBar" type="ScrollContainer" parent="VBoxTitulo/Control/VFlex/VBoxSelector" unique_id=1133856421]
+custom_minimum_size = Vector2(80.38, 62.68)
+custom_maximum_size = Vector2(146.375, -1)
+propagate_maximum_size = true
+layout_mode = 2
+size_flags_horizontal = 4
+offset_transform_enabled = true
+
+[node name="VBoxLV" type="VBoxContainer" parent="VBoxTitulo/Control/VFlex/VBoxSelector/VScrollBar" unique_id=811803983]
+layout_mode = 2
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1590710727]
+tree_root = SubResource("AnimationNodeStateMachine_guahi")
+
+[connection signal="pressed" from="VBoxTitulo/Control/VFlex/VBoxMain/BtnStart" to="." method="_on_btn_start_requested"]
+[connection signal="pressed" from="VBoxTitulo/Control/VFlex/VBoxMain/BtnQuit" to="." method="_on_btn_quit_requested"]

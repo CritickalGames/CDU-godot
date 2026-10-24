@@ -15,3 +15,6 @@ func get_default_player_spawn() -> Vector2:
 
 func get_player_camera() -> Camera2D:
 	return player_camera
+
+func get_spawner() -> Spawner2D:
+	return player_spawn_marker

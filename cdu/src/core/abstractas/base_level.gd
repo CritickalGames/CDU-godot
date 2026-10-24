@@ -1,6 +1,6 @@
 @abstract
 class_name BaseLevel
-extends Node2D
+extends Node
 ## Abstract class for levels
 
 ## Provides default global position for player to be placed in level

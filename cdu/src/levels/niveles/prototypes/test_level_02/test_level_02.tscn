@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dog1ytfg1b3gg" path="res://assets/art/world/tilesets/Mountains_Sheet_v2.png" id="11_f8n8s"]
 [ext_resource type="PackedScene" uid="uid://bmmdnypq2jn02" path="res://src/levels/level_objects/bonfire/bonfire.tscn" id="12_r5ofg"]
 [ext_resource type="PackedScene" uid="uid://c30h5vs12dmlh" path="res://src/gameplay/prototipo/camera/player_camera.tscn" id="13_jfbr4"]
+[ext_resource type="Resource" uid="uid://cudv553sxpyep" path="res://recursos/2d/prototipo/jugador.tres" id="15_rdeg4"]
 [ext_resource type="PackedScene" uid="uid://d4eus8ydjfa0m" path="res://src/levels/markers/spawn2D/spawner_general.tscn" id="15_t7rm6"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ephit"]
@@ -360,6 +361,7 @@ limit_bottom = 360
 
 [node name="PlayerSpawn" parent="Entities" unique_id=1371477265 instance=ExtResource("15_t7rm6")]
 position = Vector2(616, 208)
+char_2d = ExtResource("15_rdeg4")
 
 [node name="Environment" type="Node2D" parent="." unique_id=1922590553]
 
